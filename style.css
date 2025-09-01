@@ -36,7 +36,7 @@ body {
     align-items: center;
     transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 3;
-    overflow: hidden;
+    overflow: visible;
     backface-visibility: hidden;
     transform-style: preserve-3d;
 }
@@ -72,7 +72,7 @@ body {
     position: relative;
     margin: 40px auto;
     z-index: 15;
-    overflow: hidden;
+    overflow: visible;
     backface-visibility: hidden;
 }
 
@@ -118,19 +118,23 @@ body {
 
 .candles {
     position: absolute;
-    top: -30px;
+    top: -25px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     gap: 20px;
+    z-index: 997;
 }
 
 .candle {
-    width: 10px;
-    height: 40px;
+    width: 12px;
+    height: 45px;
     background: #fff;
-    border-radius: 5px;
+    border-radius: 6px;
     position: relative;
+    z-index: 998;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .flame {
@@ -138,12 +142,13 @@ body {
     top: -20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 15px;
-    height: 20px;
+    width: 16px;
+    height: 22px;
     background: #ffd700;
     border-radius: 50% 50% 20% 20%;
     animation: flicker 0.5s infinite alternate;
-    box-shadow: 0 0 10px #ffd700;
+    box-shadow: 0 0 12px #ffd700, 0 0 20px #ff6b35;
+    z-index: 999;
 }
 
 @keyframes flicker {
@@ -186,6 +191,23 @@ body {
     display: none;
 }
 
+.magic-lamp-image {
+    width: 120%;
+    height: 120%;
+    object-fit: cover;
+    border-radius: 60px 60px 20px 20px;
+    position: relative;
+    margin: 0 auto 30px;
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+    animation: lampGlow 3s ease-in-out infinite;
+    transform: scale(1.2);
+}
+
+@keyframes lampGlow {
+    0%, 100% { box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4); }
+    50% { box-shadow: 0 15px 40px rgba(255, 215, 0, 0.7); }
+}
+
 .magic-lamp-container {
     width: 300px;
     height: 300px;
@@ -194,12 +216,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('lamba.jpg') no-repeat center center;
-    background-size: cover;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
     border-radius: 50%;
     overflow: hidden;
     z-index: 16;
     backface-visibility: hidden;
+    box-shadow: 0 0 50px rgba(255, 215, 0, 0.5);
 }
 
 .magic-lamp {
@@ -375,7 +397,6 @@ body {
 .image-placeholder {
     width: 100%;
     min-height: 220px;
-    background: linear-gradient(135deg, #f0e68c, #f0e68c);
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -408,7 +429,7 @@ body {
 .gallery-image {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     border-radius: 20px;
     transition: transform 0.3s ease;
 }
@@ -708,8 +729,6 @@ body {
         max-width: 900px;
     }
     
-    
-    
     .gallery-paragraph {
         font-size: 1.4em;
         margin-bottom: 50px;
@@ -726,8 +745,6 @@ body {
         min-height: 700px;
         max-width: 1000px;
     }
-    
-    
     
     .gallery-paragraph {
         font-size: 1.6em;
@@ -746,11 +763,9 @@ body {
         max-width: 1200px;
     }
     
-    
-    
     .gallery-paragraph {
         font-size: 1.8em;
         margin-bottom: 70px;
         max-width: 1100px;
     }
-} 
+}
